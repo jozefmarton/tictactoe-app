@@ -78,8 +78,8 @@ function Square(props) {
 
     state = {
       players: [
-        { id: 'pX', playerX: ''},
-        {id: 'pO', playerO: ''}
+        { playerX: ''},
+        { playerO: ''}
       ]
     }
 
