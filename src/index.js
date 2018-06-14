@@ -78,13 +78,18 @@ function Square(props) {
 
     state = {
       players: [
-        {playerX: 'Player 1'},
-        {playerO: 'Player 2'}
+        { id: 'pX', playerX: ''},
+        {id: 'pO', playerO: ''}
       ]
     }
 
     playernameChangeHandler = (event) => {
-      this.setState({playername: event.target.value});
+      this.setState({
+        players: [
+          { playerX: event.target.value},
+          { playerO: event.target.value}
+        ]
+      });
     }
 
     render() {
@@ -94,18 +99,15 @@ function Square(props) {
             <Board />
           </div>
           <div className="game-info">
-            <form onSubmit={this.handleSubmit}>
               <h2>Write your names:</h2>
               <Player
                 changed={this.playernameChangeHandler}
-                currentName={this.state.playername}/>
-                <Player
+                currentName={this.state.players.playerX}/>
+              <Player
                 changed={this.playernameChangeHandler}
-                currentName={this.state.playername}/>
+                currentName={this.state.players.playerO}/>
 
-              <PlayerOutput playerName={this.state.playername}/>
-
-            </form>
+              <PlayerOutput players={this.state.players}/>
           </div>
         </div>
       );
